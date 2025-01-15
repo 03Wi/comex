@@ -8,7 +8,7 @@ import java.util.Locale;
 public class InformeSintetico {
 
     private int totalDePedidosRealizados;
-    private int totalDeProductosVendidos;
+    private int  totalDeProductosVendidos;
     private int totalDeCategorias;
     private BigDecimal montoDeVentas;
     private Pedido pedidoMasBarato;
@@ -28,17 +28,18 @@ public class InformeSintetico {
         System.out.printf("- TOTAL DE PEDIDOS REALIZADOS: %s\n", this.getTotalDePedidosRealizados());
         System.out.printf("- TOTAL DE PRODUCTOS VENDIDOS: %s\n", this.getTotalDeProductosVendidos());
         System.out.printf("- TOTAL DE CATEGORIAS: %s\n", this.getTotalDeCategorias());
-        System.out.printf("- MONTO DE VENTAS: %s\n", NumberFormat.getCurrencyInstance(new Locale("es", "CO")).format(montoDeVentas.setScale(2, RoundingMode.HALF_DOWN))); //Pueden cambiar el Locale a la moneda de su pais, siguiendo esta documentación: https://www.oracle.com/java/technologies/javase/java8locales.html
+        System.out.printf("- MONTO DE VENTAS: %s\n", NumberFormat.getCurrencyInstance(new Locale("es", "CO")).format(this.montoDeVentas.setScale(2, RoundingMode.HALF_DOWN))); //Pueden cambiar el Locale a la moneda de su pais, siguiendo esta documentación: https://www.oracle.com/java/technologies/javase/java8locales.html
 
         System.out.printf("- PEDIDO MAS BARATO: %s (%s)\n",
                 NumberFormat.getCurrencyInstance
                                 (new Locale("es", "Co"))
-                        .format(pedidoMasBarato.getPrecio().multiply(new BigDecimal(pedidoMasBarato.getCantidad())).setScale(2, RoundingMode.HALF_DOWN)), pedidoMasBarato.getProducto());
+                        .format(this.pedidoMasBarato.getPrecio())
+                        ,pedidoMasBarato.getProducto());
 
         System.out.printf("- PEDIDO MAS CARO: %s (%s)\n",
                 NumberFormat.getCurrencyInstance
                         (new Locale("es", "CO"))
-                        .format(pedidoMasCaro.getPrecio().multiply(new BigDecimal(pedidoMasCaro.getCantidad())).setScale(2, RoundingMode.HALF_DOWN)), pedidoMasCaro.getProducto());
+                        .format(this.pedidoMasCaro.getPrecio().multiply(new BigDecimal(this.pedidoMasCaro.getCantidad())).setScale(2, RoundingMode.HALF_DOWN)), this.pedidoMasCaro.getProducto());
     }
 
     public int getTotalDePedidosRealizados() {
@@ -53,15 +54,4 @@ public class InformeSintetico {
         return totalDeCategorias;
     }
 
-    public BigDecimal getMontoDeVentas() {
-        return montoDeVentas;
-    }
-
-    public Pedido getPedidoMasBarato() {
-        return pedidoMasBarato;
-    }
-
-    public Pedido getPedidoMasCaro() {
-        return pedidoMasCaro;
-    }
 }

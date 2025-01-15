@@ -64,6 +64,9 @@ public class Pedido {
                 .multiply(new BigDecimal(this.getCantidad()));
     }
 
+    public Pedido() {
+    }
+
     public boolean isMasBaratoQue(Pedido pedido){
 
         return this.getPrecio()
