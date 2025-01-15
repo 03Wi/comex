@@ -20,7 +20,7 @@ public class Main {
 
         int totalDePedidosRealizados = pedidos.size();
         BigDecimal montoDeVentas = pedidos.stream()
-                .map(pedido -> pedido.getValorTotal())
+                .map(Pedido::getValorTotal)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         Pedido pedidoMasBarato =

@@ -31,10 +31,6 @@ public class Pedido {
         return producto;
     }
 
-    public String getCliente() {
-        return cliente;
-    }
-
     public BigDecimal getPrecio() {
         return precio;
     }
@@ -43,9 +39,6 @@ public class Pedido {
         return cantidad;
     }
 
-    public LocalDate getFecha() {
-        return fecha;
-    }
 
     @Override
     public String toString() {
