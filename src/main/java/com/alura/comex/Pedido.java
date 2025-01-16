@@ -23,6 +23,10 @@ public class Pedido {
         this.fecha = fecha;
     }
 
+    public Pedido() {
+
+    }
+
     public String getCategoria() {
         return categoria;
     }
@@ -55,29 +59,6 @@ public class Pedido {
     public BigDecimal getValorTotal(){
         return this.getPrecio()
                 .multiply(new BigDecimal(this.getCantidad()));
-    }
-
-    public Pedido() {
-    }
-
-    public boolean isMasBaratoQue(Pedido pedido){
-
-        return this.getPrecio()
-                .multiply(new BigDecimal(this.getCantidad()))
-                .compareTo(
-                        pedido.getPrecio()
-                                .multiply( new BigDecimal(pedido.getCantidad())) ) < 0;
-    }
-
-    public boolean isMasCaroQue(Pedido pedido){
-
-        return !this.isMasBaratoQue(pedido);
-//        return this
-//                .getPrecio()
-//                .multiply(new BigDecimal(this.getCantidad()))
-//                .compareTo(
-//                        pedido.getPrecio()
-//                        .multiply(new BigDecimal( pedido.getCantidad())) ) > 0;
     }
 
 }

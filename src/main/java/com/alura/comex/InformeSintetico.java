@@ -3,6 +3,8 @@ package com.alura.comex;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Locale;
 
 public class InformeSintetico {
@@ -42,6 +44,42 @@ public class InformeSintetico {
                         .format(this.pedidoMasCaro.getPrecio().multiply(new BigDecimal(this.pedidoMasCaro.getCantidad())).setScale(2, RoundingMode.HALF_DOWN)), this.pedidoMasCaro.getProducto());
     }
 
+    public static int totalDeProductosVendidos(List<Pedido> pedidos) {
+        return pedidos.stream()
+                .mapToInt(Pedido::getCantidad)
+                .sum();
+    }
+
+    public static BigDecimal montoDeVentas(List<Pedido> pedidos) {
+        return pedidos.stream()
+                .map(Pedido::getValorTotal)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+    public static int totalDePedidosRealizados(List<Pedido> pedidos) {
+        return pedidos.size();
+    }
+
+    public static Pedido pedidoMasBarato(List<Pedido> pedidos) {
+        return pedidos.stream()
+                .min(Comparator.comparing(pedido ->
+                        pedido.getPrecio()
+                                .multiply(new BigDecimal(pedido.getCantidad()))))
+                .orElse(new Pedido());
+    }
+
+    public static Pedido pedidoMasCaro(List<Pedido> pedidos) {
+        return pedidos.stream()
+                .max(Comparator.comparing(pedido ->
+                        pedido.getPrecio()
+                                .multiply(new BigDecimal(pedido.getCantidad()))))
+                .orElse(new Pedido());
+    }
+    public static List<String> totalDeCategorias(List<Pedido> pedidos) {
+        return pedidos.stream()
+                .map(Pedido::getCategoria)
+                .distinct()
+                .toList();
+    }
     public int getTotalDePedidosRealizados() {
         return totalDePedidosRealizados;
     }

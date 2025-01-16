@@ -14,32 +14,16 @@ public class Main {
     public static void main(String[] args) throws IOException, URISyntaxException {
 
         ArrayList<Pedido> pedidos = ProcesadorCSV.extractData("pedidos.csv");
-        int totalDeProductosVendidos = pedidos.stream()
-                .mapToInt(Pedido::getCantidad)
-                .sum();
+        int totalDeProductosVendidos = InformeSintetico.totalDeProductosVendidos(pedidos);
 
-        int totalDePedidosRealizados = pedidos.size();
-        BigDecimal montoDeVentas = pedidos.stream()
-                .map(Pedido::getValorTotal)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        int totalDePedidosRealizados = InformeSintetico.totalDePedidosRealizados(pedidos);
+        BigDecimal montoDeVentas = InformeSintetico.montoDeVentas(pedidos);
 
-        Pedido pedidoMasBarato =
-                pedidos.stream()
-                .min(Comparator.comparing(pedido ->
-                        pedido.getPrecio()
-                                .multiply(new BigDecimal(pedido.getCantidad()))))
-                .orElse(new Pedido());
+        Pedido pedidoMasBarato = InformeSintetico.pedidoMasBarato(pedidos);
+        Pedido pedidoMasCaro = InformeSintetico.pedidoMasCaro(pedidos);
 
-        Pedido pedidoMasCaro = pedidos.stream()
-                .max(Comparator.comparing(pedido ->
-                        pedido.getPrecio()
-                                .multiply(new BigDecimal(pedido.getCantidad()))))
-                .orElse(new Pedido());
-
-        List<String> categoriasProcesadas = new ArrayList<>(pedidos.stream()
-                .map(Pedido::getCategoria)
-                .distinct()
-                .toList());
+        List<String> categoriasProcesadas = new ArrayList<>();
+        categoriasProcesadas.addAll(InformeSintetico.totalDeCategorias(pedidos));
         int totalDeCategorias = categoriasProcesadas.size();
 
         InformeSintetico informeSintetico = new InformeSintetico(
