@@ -4,16 +4,13 @@ import com.alura.comex.service.InformeSinteticoService;
 import com.alura.comex.util.InformeSinteticoFormatter;
 import com.alura.comex.util.ProcesadorCSV;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args)  {
 
-        ArrayList<Pedido> pedidos = ProcesadorCSV.extractData("pedidos.csv");
-
+        ArrayList<Pedido> pedidos = ProcesadorCSV.extract("pedidos.csv");
         InformeSinteticoService
                 informeSinteticoService = new InformeSinteticoService();
         InformeSintetico

@@ -12,10 +12,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ProcesadorCSV {
+public class ProcesadorCSV implements IFileExtractor{
 
-
-    public static ArrayList<Pedido> extractData(String url) {
+    @Override
+    public  ArrayList<Pedido> extract(String url) {
 
         ArrayList<Pedido> pedidos = new ArrayList<>();
         try {
