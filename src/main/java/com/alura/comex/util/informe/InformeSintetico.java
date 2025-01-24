@@ -1,4 +1,6 @@
-package com.alura.comex;
+package com.alura.comex.util.informe;
+
+import com.alura.comex.model.Pedido;
 
 import java.math.BigDecimal;
 

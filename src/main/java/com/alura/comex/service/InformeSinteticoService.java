@@ -1,7 +1,7 @@
 package com.alura.comex.service;
 
-import com.alura.comex.InformeSintetico;
-import com.alura.comex.Pedido;
+import com.alura.comex.util.informe.InformeSintetico;
+import com.alura.comex.model.Pedido;
 import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.List;

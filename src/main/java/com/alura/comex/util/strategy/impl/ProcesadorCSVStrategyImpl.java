@@ -1,6 +1,7 @@
-package com.alura.comex.util;
+package com.alura.comex.util.strategy.impl;
 
-import com.alura.comex.Pedido;
+import com.alura.comex.model.Pedido;
+import com.alura.comex.util.strategy.IExtractorStrategy;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -12,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ProcesadorCSV implements IFileExtractor{
+public class ProcesadorCSVStrategyImpl implements IExtractorStrategy {
 
     @Override
     public  ArrayList<Pedido> extract(String url) {

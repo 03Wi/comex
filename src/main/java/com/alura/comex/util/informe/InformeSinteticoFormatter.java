@@ -1,6 +1,4 @@
-package com.alura.comex.util;
-
-import com.alura.comex.InformeSintetico;
+package com.alura.comex.util.informe;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -10,6 +8,7 @@ import java.util.Locale;
 public class InformeSinteticoFormatter {
 
     public static void show(InformeSintetico informe) {
+
         System.out.println("#### INFORME DE VALORES TOTALES");
         System.out.printf("- TOTAL DE PEDIDOS REALIZADOS: %s\n", informe.getTotalDePedidosRealizados());
         System.out.printf("- TOTAL DE PRODUCTOS VENDIDOS: %s\n", informe.getTotalDeProductosVendidos());
@@ -24,7 +23,7 @@ public class InformeSinteticoFormatter {
                                 (new Locale("es", "Co"))
                         .format(informe.getPedidoMasBarato().getPrecio())
                 , informe.getPedidoMasBarato().getProducto());
-
+        System.out.println("informe sout = " + informe.getPedidoMasCaro());
         System.out.printf("- PEDIDO MAS CARO: %s (%s)\n",
                 NumberFormat.getCurrencyInstance
                                 (new Locale("es", "CO"))
