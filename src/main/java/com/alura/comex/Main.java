@@ -15,16 +15,17 @@ public class Main {
     public static void main(String[] args)  {
 
         ArchivoProcesadorContext context = new ArchivoProcesadorContext();
-        IExtractorStrategy strategy = ArchivoFactory.getStrategy("pedidos.csv");
+        IExtractorStrategy strategy = ArchivoFactory.getStrategy("pedidos.json");
         context.setStrategy(strategy);
-        ArrayList<Pedido> pedidos = context.procesadorArchivo("pedidos.csv");
+        System.out.println(context.procesadorArchivo("pedidos.json"));
+//        ArrayList<Pedido> pedidos = context.procesadorArchivo("pedidos.csv");
 
-        InformeSinteticoService
-                informeSinteticoService = new InformeSinteticoService();
-        InformeSintetico
-                informeSintetico = informeSinteticoService.generarInformeSintetico(pedidos);
-
-        InformeSinteticoFormatter.show(informeSintetico);
+//        InformeSinteticoService
+//                informeSinteticoService = new InformeSinteticoService();
+//        InformeSintetico
+//                informeSintetico = informeSinteticoService.generarInformeSintetico(pedidos);
+//
+//        InformeSinteticoFormatter.show(informeSintetico);
     }
 
 }

@@ -11,14 +11,15 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ProcesadorCSVStrategyImpl implements IExtractorStrategy {
 
     @Override
-    public  ArrayList<Pedido> extract(String url) {
+    public List<Pedido> extract(String url) {
 
-        ArrayList<Pedido> pedidos = new ArrayList<>();
+        List<Pedido> pedidos = new ArrayList<>();
         try {
             URL recursoCSV = ClassLoader.getSystemResource(url);
             Path caminoDelArchivo = caminoDelArchivo = Path.of(recursoCSV.toURI());
@@ -29,7 +30,6 @@ public class ProcesadorCSVStrategyImpl implements IExtractorStrategy {
             while (lectorDeLineas.hasNextLine()) {
                 String linea = lectorDeLineas.nextLine();
                 String[] registro = linea.split(",");
-
                 String categoria = registro[0];
                 String producto = registro[1];
                 BigDecimal precio = new BigDecimal(registro[2]);

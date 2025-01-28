@@ -3,6 +3,7 @@ package com.alura.comex.util.strategy;
 import com.alura.comex.model.Pedido;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ArchivoProcesadorContext {
 
@@ -12,7 +13,7 @@ public class ArchivoProcesadorContext {
         this.extractor = extractor;
     }
 
-    public ArrayList<Pedido> procesadorArchivo(String archivo) {
+    public List<Pedido> procesadorArchivo(String archivo) {
         return extractor.extract(archivo);
     }
 }
