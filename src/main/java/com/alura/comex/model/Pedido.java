@@ -12,6 +12,7 @@ public class Pedido {
     private String cliente;
     private BigDecimal precio;
     private int cantidad;
+    
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate fecha;
 
@@ -52,6 +53,29 @@ public class Pedido {
         return cantidad;
     }
 
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public void setProducto(String producto) {
+        this.producto = producto;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
 
     @Override
     public String toString() {
