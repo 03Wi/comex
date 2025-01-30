@@ -43,4 +43,8 @@ public class InformeSintetico {
     public Pedido getPedidoMasCaro() {
         return pedidoMasCaro;
     }
+
+    public BigDecimal calcularPrecioPedidoMasCaro(Pedido pedido) {
+        return pedido.getPrecio().multiply(new BigDecimal(pedido.getCantidad()));
+    }
 }
