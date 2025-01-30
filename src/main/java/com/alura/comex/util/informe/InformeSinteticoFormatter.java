@@ -1,5 +1,7 @@
 package com.alura.comex.util.informe;
 
+import com.alura.comex.model.InformeSintetico;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
@@ -30,6 +32,10 @@ public class InformeSinteticoFormatter {
                         .format(informe.getPedidoMasCaro().getPrecio()
                                 .multiply(new BigDecimal(informe.getPedidoMasCaro().getCantidad()))
                                 .setScale(2, RoundingMode.HALF_DOWN)), informe.getPedidoMasCaro().getProducto());
-    }
 
+    System.out.printf("- PEDIDO MAS CARO: %s (%s)\n",
+                NumberFormat.getCurrencyInstance
+                                (new Locale("es", "CO"))
+                        .format(informe.getPedidoMasCaro().getPrecio()), informe.getPedidoMasCaro().getProducto());
+    }
 }

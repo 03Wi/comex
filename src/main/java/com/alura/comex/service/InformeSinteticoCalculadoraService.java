@@ -1,30 +1,12 @@
 package com.alura.comex.service;
 
-import com.alura.comex.util.informe.InformeSintetico;
 import com.alura.comex.model.Pedido;
+
 import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.List;
 
-public class InformeSinteticoService {
-
-    public InformeSintetico generarInformeSintetico(List<Pedido> pedidos){
-
-        int cantidadTotalDeProductosVendidos = calcularTotalDeProductosVendidos(pedidos);
-        BigDecimal montoTotalDeVentas = calcularMontoDeVentas(pedidos);
-        int cantidadTotalDePedidosRealizados = calcularTotalDePedidosRealizados(pedidos);
-        Pedido pedidoMasBarato = calcularPedidoMasBarato(pedidos);
-        Pedido pedidoMasCaro = calcularPedidoMasCaro(pedidos);
-        int categorias = calcularTotalDeCategorias(pedidos).size();
-
-        return new InformeSintetico(
-                cantidadTotalDePedidosRealizados,
-                cantidadTotalDeProductosVendidos,
-                categorias,
-                montoTotalDeVentas,
-                pedidoMasBarato,
-                pedidoMasCaro);
-    }
+public class InformeSinteticoCalculadoraService {
 
     public int calcularTotalDeProductosVendidos(List<Pedido> pedidos) {
         return pedidos.stream()

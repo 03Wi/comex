@@ -26,7 +26,6 @@ public class Pedido {
     }
 
     public Pedido() {
-
     }
 
     public String getCliente() {
