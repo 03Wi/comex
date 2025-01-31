@@ -13,8 +13,6 @@ public class ArchivoProcesadorContext {
     }
 
     public List<Pedido> procesadorArchivo(String archivo) {
-
-        System.out.println(extractor.extract(archivo));
         return extractor.extract(archivo);
     }
 }

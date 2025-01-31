@@ -5,9 +5,7 @@ import java.math.BigDecimal;
 public class Categoria {
 
     private String name;
-
     private int cantidadProductosVendidos;
-
     private BigDecimal montoVendido;
 
     public Categoria(String name, int cantidadProductosVendidos, BigDecimal montoVendido) {

@@ -4,10 +4,8 @@ import com.alura.comex.model.Categoria;
 import com.alura.comex.model.Pedido;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
@@ -47,7 +45,6 @@ public class InformeSinteticoCalculadoraService {
     }
 
     public List<String> calcularTotalDeCategorias(List<Pedido> pedidos) {
-        System.out.println(calcularTotalVentasCategoria(pedidos));
         return pedidos.stream()
                 .map(Pedido::getCategoria)
                 .distinct()
@@ -56,8 +53,8 @@ public class InformeSinteticoCalculadoraService {
 
     public List<Categoria> calcularTotalVentasCategoria(List<Pedido> pedidos) {
         return pedidos.stream()
-                .collect(Collectors.groupingBy(Pedido::getCategoria,
-                        Collectors.collectingAndThen(
+                .collect(groupingBy(Pedido::getCategoria,
+                        collectingAndThen(
                                 toList(),
                                 list -> new Categoria(
                                         list.get(0).getCategoria(),
@@ -69,5 +66,30 @@ public class InformeSinteticoCalculadoraService {
                 .stream()
                 .sorted(Comparator.comparing(Categoria::getName))
                 .toList();
+    }
+
+    public List<Pedido> calcularProductosMasVendidos(List<Pedido> pedidos){
+
+         return pedidos.stream()
+                .sorted(Comparator
+                        .comparing(Pedido::getCantidad).reversed())
+                 .limit(3)
+                 .toList();
+    }
+
+    public List<Pedido> filtrarLosProductosMasCarosPorCategoria(List<Pedido> pedidos){
+
+//        pedidos.stream()
+//                .collect(Collectors.groupingBy(Pedido::getCategoria,
+//                        Collectors.collectingAndThen(
+//                                toList(),
+//                                list -> new Pedido(
+//                                       list.get(0).getCategoria(),
+//                                        list
+//                                )
+//                        )))
+
+
+        return List.of();
     }
 }

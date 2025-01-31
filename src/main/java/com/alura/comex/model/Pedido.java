@@ -25,6 +25,12 @@ public class Pedido {
         this.fecha = fecha;
     }
 
+    public Pedido(String categoria, String producto, BigDecimal precio) {
+        this.categoria = categoria;
+        this.producto = producto;
+        this.precio = precio;
+    }
+
     public Pedido() {
     }
 
