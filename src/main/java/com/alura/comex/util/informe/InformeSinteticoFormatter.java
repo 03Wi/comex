@@ -9,7 +9,7 @@ import java.util.Locale;
 
 public class InformeSinteticoFormatter {
 
-    public static void show(InformeSintetico informe) {
+    public static void formatter(InformeSintetico informe) {
 
         System.out.println("#### INFORME DE VALORES TOTALES");
         System.out.printf("- TOTAL DE PEDIDOS REALIZADOS: %s\n", informe.getTotalDePedidosRealizados());
@@ -18,7 +18,6 @@ public class InformeSinteticoFormatter {
         System.out.printf("- MONTO DE VENTAS: %s\n",
                 NumberFormat.getCurrencyInstance(new Locale("es", "CO"))
                         .format(informe.getMontoDeVentas().setScale(2, RoundingMode.HALF_DOWN))); //Pueden cambiar el Locale a la moneda de su pais, siguiendo esta documentación: https://www.oracle.com/java/technologies/javase/java8locales.html
-
         System.out.printf("- PEDIDO MAS BARATO: %s (%s)\n",
                 NumberFormat.getCurrencyInstance(new Locale("es", "Co"))
                         .format(informe.getPedidoMasBarato().getPrecio())

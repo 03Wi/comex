@@ -21,9 +21,7 @@ public class ProcesadorCSVStrategyImpl implements IExtractorStrategy {
 
         List<Pedido> pedidos = new ArrayList<>();
         try {
-            URL recursoCSV = ClassLoader.getSystemResource(url);
-            Path caminoDelArchivo = caminoDelArchivo = Path.of(recursoCSV.toURI());
-            Scanner lectorDeLineas = new Scanner(caminoDelArchivo);
+            Scanner lectorDeLineas = scannerFileOfSystem(url);
             lectorDeLineas.nextLine();
 
             int cantidadDeRegistros = 0;
@@ -48,5 +46,12 @@ public class ProcesadorCSVStrategyImpl implements IExtractorStrategy {
             throw new RuntimeException("Error al abrir Scanner para procesar archivo!");
         }
         return pedidos;
+    }
+
+    private static Scanner scannerFileOfSystem(String url) throws URISyntaxException, IOException {
+        URL recursoCSV = ClassLoader.getSystemResource(url);
+        Path caminoDelArchivo = caminoDelArchivo = Path.of(recursoCSV.toURI());
+        Scanner lectorDeLineas = new Scanner(caminoDelArchivo);
+        return lectorDeLineas;
     }
 }

@@ -6,15 +6,15 @@ import com.alura.comex.model.Pedido;
 
 import java.util.List;
 
-public class GenerarInformeSintetico {
+public class CrearInformeSintetico {
 
     private InformeSinteticoCalculadoraService calculadora;
 
-    public GenerarInformeSintetico(InformeSinteticoCalculadoraService calculadora) {
+    public CrearInformeSintetico(InformeSinteticoCalculadoraService calculadora) {
         this.calculadora = calculadora;
     }
 
-    public InformeSintetico generarInformeSintetico(List<Pedido> pedidos){
+    public InformeSintetico generarInformeSintetico(List<Pedido> pedidos) {
 
         return new InformeSintetico(
                 calculadora.calcularTotalDePedidosRealizados(pedidos),

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.File;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
 
@@ -20,8 +21,7 @@ public class ProcesadorXMLStrategyImpl implements IExtractorStrategy {
     public List<Pedido> extract(String path) {
 
         try {
-            URL recurso = ClassLoader.getSystemResource(path);
-            File file = new File(recurso.toURI());
+            File file = getFileOfSystem(path);
             XmlMapper mapper = new XmlMapper();
             mapper.registerModule(new JavaTimeModule());
             mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -30,5 +30,10 @@ public class ProcesadorXMLStrategyImpl implements IExtractorStrategy {
         }catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private static File getFileOfSystem(String path) throws URISyntaxException {
+        URL recurso = ClassLoader.getSystemResource(path);
+        return new File(recurso.toURI());
     }
 }

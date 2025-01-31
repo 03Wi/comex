@@ -1,6 +1,9 @@
 package com.alura.comex.model;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class InformeSintetico {
 
@@ -47,4 +50,5 @@ public class InformeSintetico {
     public BigDecimal calcularPrecioPedidoMasCaro(Pedido pedido) {
         return pedido.getPrecio().multiply(new BigDecimal(pedido.getCantidad()));
     }
+
 }

@@ -6,9 +6,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-//import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.File;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
 
@@ -18,10 +18,8 @@ public class ProcesadorJSONStrategyImpl implements IExtractorStrategy {
     public List<Pedido> extract(String path) {
 
         try {
-            URL recurso = ClassLoader.getSystemResource(path);
+            File file = getFileOfSystem(path);
             ObjectMapper objectMapper = new ObjectMapper();
-            File file = new File(recurso.toURI());
-//            System.out.println(objectMapper.readTree(file).toString());
             objectMapper.registerModule(new JavaTimeModule());
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             return objectMapper.readValue(file, new TypeReference<List<Pedido>>() {});
@@ -29,4 +27,10 @@ public class ProcesadorJSONStrategyImpl implements IExtractorStrategy {
             throw new RuntimeException(e);
         }
     }
+
+    private static File getFileOfSystem(String path) throws URISyntaxException {
+        URL recurso = ClassLoader.getSystemResource(path);
+        return new File(recurso.toURI());
+    }
+
 }
