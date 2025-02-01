@@ -68,28 +68,34 @@ public class InformeSinteticoCalculadoraService {
                 .toList();
     }
 
-    public List<Pedido> calcularProductosMasVendidos(List<Pedido> pedidos){
+    public List<Pedido> calcularProductosMasVendidos(List<Pedido> pedidos) {
 
-         return pedidos.stream()
+        return pedidos.stream()
                 .sorted(Comparator
                         .comparing(Pedido::getCantidad).reversed())
-                 .limit(3)
-                 .toList();
+                .limit(3)
+                .toList();
     }
 
-    public List<Pedido> filtrarLosProductosMasCarosPorCategoria(List<Pedido> pedidos){
+    public List<Pedido> calcularLosProductosMasCarosPorCategoria(List<Pedido> pedidos) {
 
-//        pedidos.stream()
-//                .collect(Collectors.groupingBy(Pedido::getCategoria,
-//                        Collectors.collectingAndThen(
-//                                toList(),
-//                                list -> new Pedido(
-//                                       list.get(0).getCategoria(),
-//                                        list
-//                                )
-//                        )))
-
-
-        return List.of();
+        return pedidos.stream()
+                .collect(Collectors.groupingBy(Pedido::getCategoria,
+                        Collectors.collectingAndThen(
+                                toList(),
+                                list -> new Pedido(
+                                        list.get(0).getCategoria(),
+                                        list.stream()
+                                                .max(Comparator.comparing(Pedido::getPrecio))
+                                                .map(Pedido::getProducto).get(),
+                                        list.stream()
+                                                .max(Comparator.comparing(Pedido::getPrecio))
+                                                .get().getPrecio()
+                                )
+                        )))
+                .values()
+                .stream()
+                .sorted(Comparator.comparing(Pedido::getCategoria))
+                .toList();
     }
 }

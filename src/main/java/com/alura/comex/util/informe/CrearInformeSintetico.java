@@ -22,7 +22,10 @@ public class CrearInformeSintetico {
                 calculadora.calcularTotalDeCategorias(pedidos).size(),
                 calculadora.calcularMontoDeVentas(pedidos),
                 calculadora.calcularPedidoMasBarato(pedidos),
-                calculadora.calcularPedidoMasCaro(pedidos));
+                calculadora.calcularPedidoMasCaro(pedidos),
+                calculadora.calcularTotalVentasCategoria(pedidos),
+                calculadora.calcularProductosMasVendidos(pedidos),
+                calculadora.calcularLosProductosMasCarosPorCategoria(pedidos));
 
     }
 

@@ -23,9 +23,33 @@ public class InformeSinteticoFormatter {
                         .format(informe.getPedidoMasBarato().getPrecio())
                 , informe.getPedidoMasBarato().getProducto());
 
-        System.out.printf("- PEDIDO MAS CARO: %s (%s)\n",
+        System.out.printf("- PEDIDO MAS CARO: %s (%s)\n\n",
                 NumberFormat.getCurrencyInstance(new Locale("es", "CO"))
                         .format(informe.calcularPrecioPedidoMasCaro(informe.getPedidoMasCaro())),
                 informe.getPedidoMasCaro().getProducto());
+
+        System.out.println("#### INFORME DE PRODUCTOS MAS VENDIDOS");
+        informe.getProductosMasVendidos().forEach(pedido -> {
+            System.out.printf("- Producto: %s, Unidades: %s\n",
+                    pedido.getProducto(),
+                    pedido.getCantidad());
+        });
+
+        System.out.println("\n#### INFORME DE VENTAS POR CATEGORIAS");
+        informe.getTotalVentasCategoria().forEach(categoria -> {
+            System.out.printf("- Categoria: %s: Unidades: %s, Monto: %s\n",
+                    categoria.getName(),
+                    categoria.getCantidadProductosVendidos(),
+                    NumberFormat.getCurrencyInstance(new Locale("es", "CO"))
+                            .format(categoria.getMontoVendido().setScale(2, RoundingMode.HALF_DOWN)));
+        });
+        System.out.println("\n#### INFORME DE PRODUCTOS MAS CAROS DE CADA CATEGORIA");
+        informe.getProductosMasCarosCategoria().forEach(pedido -> {
+            System.out.printf("- Categoria: %s: Producto: %s, Precio: %s)\n",
+                    pedido.getCategoria(),
+                    pedido.getProducto(),
+                    NumberFormat.getCurrencyInstance(new Locale("es", "CO"))
+                            .format(pedido.getPrecio().setScale(2, RoundingMode.HALF_DOWN)));
+        });
     }
 }

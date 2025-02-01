@@ -6,9 +6,9 @@ public class Main {
 
     public static void main(String[] args)  {
 
-        MostrarformatearInforme informeSintetico
-                = new MostrarformatearInforme();
-        informeSintetico.analisarArchivoGenerarInforme("pedidos.xml");
+        MostrarformatearInforme informeSintetico = new MostrarformatearInforme();
+        informeSintetico
+                .analisarArchivoGenerarInforme("pedidos.xml");
     }
 
 }
