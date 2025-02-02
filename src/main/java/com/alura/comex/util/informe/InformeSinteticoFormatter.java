@@ -2,7 +2,6 @@ package com.alura.comex.util.informe;
 
 import com.alura.comex.model.InformeSintetico;
 
-import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.Locale;

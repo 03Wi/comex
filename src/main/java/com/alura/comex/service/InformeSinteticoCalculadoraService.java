@@ -59,7 +59,8 @@ public class InformeSinteticoCalculadoraService {
                                 list -> new Categoria(
                                         list.get(0).getCategoria(),
                                         list.stream().mapToInt(Pedido::getCantidad).sum(),
-                                        list.stream().map(Pedido::getPrecio).reduce(BigDecimal.ZERO, BigDecimal::add)
+                                        list.stream()
+                                                .map(Pedido::getValorTotal).reduce(BigDecimal.ZERO, BigDecimal::add)
                                 )
                         )))
                 .values()
@@ -98,4 +99,5 @@ public class InformeSinteticoCalculadoraService {
                 .sorted(Comparator.comparing(Pedido::getCategoria))
                 .toList();
     }
+
 }

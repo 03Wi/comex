@@ -3,10 +3,7 @@ package com.alura.comex.util.strategy.impl;
 import com.alura.comex.model.ListaPedidos;
 import com.alura.comex.model.Pedido;
 import com.alura.comex.util.strategy.IExtractorStrategy;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
