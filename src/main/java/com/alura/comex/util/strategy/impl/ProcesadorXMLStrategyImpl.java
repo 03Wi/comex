@@ -21,7 +21,6 @@ public class ProcesadorXMLStrategyImpl implements IExtractorStrategy {
             File file = getFileOfSystem(path);
             XmlMapper mapper = new XmlMapper();
             mapper.registerModule(new JavaTimeModule());
-            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             return mapper.readValue(file, ListaPedidos.class).getPedidos();
 
         }catch (Exception e) {

@@ -8,7 +8,7 @@ public class Main {
 
         MostrarformatearInforme informeSintetico = new MostrarformatearInforme();
         informeSintetico
-                .analisarArchivoGenerarInforme("pedidos.json");
+                .analisarArchivoGenerarInforme("pedidos.xml");
     }
 
 }

@@ -21,7 +21,6 @@ public class ProcesadorJSONStrategyImpl implements IExtractorStrategy {
             File file = getFileOfSystem(path);
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.registerModule(new JavaTimeModule());
-            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             return objectMapper.readValue(file, new TypeReference<List<Pedido>>() {});
         } catch (Exception e) {
             throw new RuntimeException(e);
