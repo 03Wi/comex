@@ -2,6 +2,7 @@ package com.alura.comex.service;
 
 import com.alura.comex.model.Categoria;
 import com.alura.comex.model.Pedido;
+import com.alura.comex.util.strategy.ArchivoProcesadorContext;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -19,14 +20,13 @@ class InformeSinteticoCalculadoraServiceTest {
     private InformeSinteticoCalculadoraService service = new InformeSinteticoCalculadoraService();
 
     @Mock
-    List<Pedido> pedidos;
+    List<Pedido> pedidos;;
 
     @Mock
     List<Categoria> categorias;
 
     @BeforeEach
     void setUp() {
-
         pedidos = List.of(
                 new Pedido("Electrónica", "Laptop", "Cliente1", new BigDecimal("100"), 1, LocalDate.now()),
                 new Pedido("Electrónica", "Smartphone", "Cliente2", new BigDecimal("101"), 2,LocalDate.now()),
